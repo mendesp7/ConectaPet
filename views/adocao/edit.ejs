@@ -1,0 +1,52 @@
+<%- include('../header') %>
+
+<h2>Editar Adoção</h2>
+
+<div class="form-card">
+  <form action="/adocao/edit/<%= adocao._id %>" method="post">
+    
+    <div class="form-group">
+      <label for="animal">🐾 Animal:</label>
+      <select id="animal" name="animal" required>
+        <% animais.forEach(function(a){ %>
+          <option value="<%= a._id %>" <%= adocao.animal && adocao.animal.equals(a._id) ? 'selected' : '' %>>
+            <%= a.nome %> — <%= a.especie %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="adotante">👤 Adotante:</label>
+      <select id="adotante" name="adotante" required>
+        <% adotantes.forEach(function(d){ %>
+          <option value="<%= d._id %>" <%= adocao.adotante && adocao.adotante.equals(d._id) ? 'selected' : '' %>>
+            <%= d.nome %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="dataAdocao">📅 Data da Adoção:</label>
+      <input 
+        type="date" 
+        id="dataAdocao" 
+        name="dataAdocao" 
+        value="<%= adocao.dataAdocao ? adocao.dataAdocao.toISOString().split('T')[0] : '' %>" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="observacoes">📝 Observações:</label>
+      <textarea id="observacoes" name="observacoes" placeholder="Detalhes ou observações..."><%= adocao.observacoes || '' %></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn">💾 Salvar Alterações</button>
+      <a href="/adocao/lst" class="btn cancelar">Cancelar</a>
+    </div>
+  </form>
+</div>
+
+<%- include('../footer') %>

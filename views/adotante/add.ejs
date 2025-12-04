@@ -1,0 +1,13 @@
+<%- include('../header') %>
+
+<h2>Cadastrar Adotante</h2>
+
+<form action="/adotante/add" method="post">
+  <label>Nome: <input type="text" name="nome" required></label><br>
+  <label>Email: <input type="email" name="email" required></label><br>
+  <label>Telefone: <input type="text" name="telefone" required></label><br><br>
+
+  <button type="submit">Salvar</button>
+</form>
+
+<%- include('../footer') %>

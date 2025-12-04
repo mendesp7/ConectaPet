@@ -1,0 +1,37 @@
+<%- include('../header') %>
+
+<div class="container">
+  <h2 class="titulo-lista">📜 Lista de Adoções</h2>
+
+  <a href="/adocao/add" class="btn add-btn">➕ Registrar Nova Adoção</a>
+
+  <% if (!adocoes || adocoes.length === 0) { %>
+    <p class="no-adocoes">Nenhuma adoção registrada.</p>
+  <% } else { %>
+    <div class="cards-container">
+      <% adocoes.forEach(function(a){ %>
+        <div class="card-item adocao-card">
+          <div class="card-header">
+            <h3>🐾 <%= a.animal ? a.animal.nome : '(Animal removido)' %></h3>
+            <span class="status-tag">Adotado ✅</span>
+          </div>
+
+          <div class="card-body">
+            <p><strong>👤 Adotante:</strong> <%= a.adotante ? a.adotante.nome : '(Adotante removido)' %></p>
+            <p><strong>📅 Data da Adoção:</strong> <%= new Date(a.dataAdocao).toLocaleDateString() %></p>
+            <p><strong>📝 Observações:</strong> <%= a.observacoes || 'Sem observações' %></p>
+          </div>
+
+          <div class="card-actions">
+            <a href="/adocao/edit/<%= a._id %>" class="btn action-btn edit">✏️ Editar</a>
+            <a href="/adocao/delete/<%= a._id %>"
+               class="btn action-btn delete"
+               onclick="return confirm('Deseja excluir esta adoção?')">🗑️ Excluir</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../footer') %>

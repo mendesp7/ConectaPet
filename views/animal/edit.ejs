@@ -1,0 +1,36 @@
+<%- include('../header') %>
+
+<h2>Editar Animal</h2>
+
+<form action="/animal/edit/<%= animal._id %>" method="post" enctype="multipart/form-data">
+  <label>Nome:</label>
+  <input type="text" name="nome" value="<%= animal.nome %>" required><br>
+
+  <label>Idade:</label>
+  <input type="number" name="idade" value="<%= animal.idade %>" required><br>
+
+  <label>Espécie:</label>
+  <input type="text" name="especie" value="<%= animal.especie %>" required><br>
+
+  <label>Descrição:</label><br>
+  <textarea name="descricao"><%= animal.descricao %></textarea><br>
+
+  <label>Foto atual:</label><br>
+  <% if (animal.fotoBase64) { %>
+    <img src="<%= animal.fotoBase64 %>" 
+         alt="Foto do animal" 
+         width="140" height="140" 
+         style="border-radius:10px; object-fit:cover; box-shadow:0 0 6px rgba(0,0,0,0.3); margin-bottom:10px;">
+  <% } else { %>
+    <p style="color:#777;">(sem foto)</p>
+  <% } %>
+  <br>
+
+  <label>Enviar nova foto (opcional):</label>
+  <input type="file" name="foto" accept="image/png, image/jpeg"><br><br>
+
+  <button type="submit" class="btn edit">💾 Salvar Alterações</button>
+  <a href="/animal/lst" class="btn cancelar">Cancelar</a>
+</form>
+
+<%- include('../footer') %>

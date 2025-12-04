@@ -1,0 +1,33 @@
+<%- include('../header') %>
+
+<div class="abrigo-list-container">
+  <h2>Lista de Abrigos</h2>
+
+  <a href="/abrigo/add" class="btn add-btn">➕ Cadastrar Novo Abrigo</a>
+
+  <% if (!abrigos || abrigos.length === 0) { %>
+    <p class="no-abrigos">Nenhum abrigo cadastrado.</p>
+  <% } else { %>
+    <div class="abrigo-cards">
+      <% abrigos.forEach(function(a){ %>
+        <div class="abrigo-card">
+          <div class="abrigo-info">
+            <h3><%= a.nome %></h3>
+            <p><strong>Endereço:</strong> <%= a.endereco %></p>
+            <p><strong>Telefone:</strong> <%= a.telefone %></p>
+            <p><strong>Email:</strong> <%= a.email %></p>
+          </div>
+
+          <div class="abrigo-actions">
+            <a href="/abrigo/edit/<%= a._id %>" class="btn action-btn edit">✏️ Editar</a>
+            <a href="/abrigo/delete/<%= a._id %>"
+               class="btn action-btn delete"
+               onclick="return confirm('Tem certeza que deseja excluir este abrigo?')">🗑️ Excluir</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../footer') %>

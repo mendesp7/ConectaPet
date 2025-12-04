@@ -1,0 +1,32 @@
+<%- include('../header') %>
+
+<div class="adotante-list-container">
+  <h2>Lista de Adotantes</h2>
+
+  <a href="/adotante/add" class="btn add-btn">➕ Cadastrar Novo Adotante</a>
+
+  <% if (!adotantes || adotantes.length === 0) { %>
+    <p class="no-adotantes">Nenhum adotante cadastrado.</p>
+  <% } else { %>
+    <div class="adotante-cards">
+      <% adotantes.forEach(function(a){ %>
+        <div class="adotante-card">
+          <div class="adotante-info">
+            <h3>👤 <%= a.nome %></h3>
+            <p><strong>Email:</strong> <%= a.email %></p>
+            <p><strong>Telefone:</strong> <%= a.telefone %></p>
+          </div>
+
+          <div class="adotante-actions">
+            <a href="/adotante/edit/<%= a._id %>" class="btn action-btn edit">✏️ Editar</a>
+            <a href="/adotante/delete/<%= a._id %>"
+               class="btn action-btn delete"
+               onclick="return confirm('Tem certeza que deseja excluir este adotante?')">🗑️ Excluir</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../footer') %>

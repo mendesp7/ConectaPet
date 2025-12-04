@@ -1,0 +1,47 @@
+<%- include('../header') %>
+
+<h2>Registrar Nova Adoção</h2>
+
+<div class="form-card">
+  <form action="/adocao/add" method="post">
+    
+    <div class="form-group">
+      <label for="animal">🐾 Animal disponível:</label>
+      <select id="animal" name="animal" required>
+        <% if (animais.length === 0) { %>
+          <option disabled selected>— Nenhum animal disponível —</option>
+        <% } else { %>
+          <% animais.forEach(function(a){ %>
+            <option value="<%= a._id %>"><%= a.nome %> — <%= a.especie %></option>
+          <% }) %>
+        <% } %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="adotante">👤 Adotante:</label>
+      <select id="adotante" name="adotante" required>
+        <% adotantes.forEach(function(d){ %>
+          <option value="<%= d._id %>"><%= d.nome %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="dataAdocao">📅 Data da Adoção:</label>
+      <input type="date" id="dataAdocao" name="dataAdocao" required>
+    </div>
+
+    <div class="form-group">
+      <label for="observacoes">📝 Observações:</label>
+      <textarea id="observacoes" name="observacoes" placeholder="Detalhes sobre a adoção..."></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn">💾 Salvar</button>
+      <a href="/adocao/lst" class="btn cancelar">Cancelar</a>
+    </div>
+  </form>
+</div>
+
+<%- include('../footer') %>

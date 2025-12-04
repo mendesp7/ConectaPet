@@ -1,0 +1,41 @@
+<%- include('../header') %>
+
+<div class="animal-list-container">
+  <h2>Lista de Animais</h2>
+
+  <a href="/animal/add" class="btn add-btn">➕ Cadastrar Novo Animal</a>
+
+  <% if (!animais || animais.length === 0) { %>
+    <p class="no-animals">Nenhum animal cadastrado.</p>
+  <% } else { %>
+    <div class="animal-cards">
+      <% animais.forEach(function(a){ %>
+        <div class="animal-card">
+          <div class="animal-photo">
+            <% if (a.fotoBase64) { %>
+              <img src="<%= a.fotoBase64 %>" alt="<%= a.nome %>">
+            <% } else { %>
+              <div class="no-photo">(sem foto)</div>
+            <% } %>
+          </div>
+
+          <div class="animal-info">
+            <h3><%= a.nome %></h3>
+            <p><strong>Idade:</strong> <%= a.idade %> anos</p>
+            <p><strong>Espécie:</strong> <%= a.especie %></p>
+            <p><strong>Descrição:</strong> <%= a.descricao %></p>
+          </div>
+
+          <div class="animal-actions">
+            <a href="/animal/edit/<%= a._id %>" class="btn action-btn edit">✏️ Editar</a>
+            <a href="/animal/delete/<%= a._id %>"
+               class="btn action-btn delete"
+               onclick="return confirm('Tem certeza que deseja excluir este animal?')">🗑️ Excluir</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../footer') %>

@@ -1,0 +1,17 @@
+<%- include('../header') %>
+
+<h2>Cadastrar Animal</h2>
+
+<form action="/animal/add" method="post" enctype="multipart/form-data">
+  <label>Nome: <input type="text" name="nome" required></label><br>
+  <label>Idade: <input type="number" name="idade" required></label><br>
+  <label>Espécie: <input type="text" name="especie" required></label><br>
+  <label>Descrição:<br><textarea name="descricao"></textarea></label><br>
+
+  <label>Foto: <input type="file" name="foto" accept="image/png, image/jpeg"></label><br><br>
+
+  <button type="submit">Salvar</button>
+  <a href="/animal/lst" class="btn cancelar">Cancelar</a>
+</form>
+
+<%- include('../footer') %>

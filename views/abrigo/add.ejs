@@ -1,0 +1,14 @@
+<%- include('../header') %>
+
+<h2>Cadastrar Abrigo</h2>
+
+<form action="/abrigo/add" method="post">
+  <label>Nome: <input type="text" name="nome" required></label><br>
+  <label>Endereço: <input type="text" name="endereco" required></label><br>
+  <label>Telefone: <input type="text" name="telefone" required></label><br>
+  <label>Email: <input type="email" name="email" required></label><br><br>
+
+  <button type="submit">Salvar</button>
+</form>
+
+<%- include('../footer') %>

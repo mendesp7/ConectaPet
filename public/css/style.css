@@ -1,0 +1,896 @@
+/* === Paleta Northern Lights ===
+1: #024059 (Azul escuro)
+2: #026873 (Azul petróleo)
+3: #04BF8A (Verde claro)
+4: #025940 (Verde musgo)
+5: #03A64A (Verde vibrante)
+*/
+
+/* === Estilo Geral === */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #026873; /* Fundo azul petróleo */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container.home {
+  text-align: center;
+  color: #024059;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 60px;
+}
+
+/* === Seção de Introdução === */
+.intro {
+  background-color: #f2fbf9;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.intro h1 {
+  font-size: 2rem;
+  color: #024059;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: #025940;
+}
+
+/* === Menu Principal === */
+.menu {
+  background-color: #024059;
+  border-radius: 12px;
+  padding: 15px 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.menu .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #03A64A;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.menu .btn:hover {
+  background-color: #04BF8A;
+  transform: translateY(-3px);
+}
+
+/* === Cores Específicas para Botões === */
+.btn.home i { color: #fff176; }
+.btn.animal i { color: #eafdf7; }
+.btn.abrigo i { color: #a2e6dc; }
+.btn.adotante i { color: #ffe1e6; }
+.btn.adocao i { color: #b9ffb0; }
+
+/* === Topbar === */
+.topbar {
+  background-color: #024059;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #04BF8A;
+}
+
+.logo i {
+  color: #03A64A;
+  font-size: 1.5rem;
+}
+
+/* === Rodapé === */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #e8faf7;
+  margin-top: auto;
+  background-color: #024059;
+  width: 100%;
+  border-top: 2px solid #03A64A;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* === Responsividade === */
+@media (max-width: 768px) {
+  .intro h1 {
+    font-size: 1.6rem;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .menu .btn {
+    width: 80%;
+    justify-content: center;
+  }
+}
+
+/* === Estilo da Lista de Animais (versão em grade) === */
+.animal-list-container {
+  width: 95%;
+  max-width: 1100px;
+  margin: 40px auto;
+  color: #f2fbf9;
+  text-align: center;
+}
+
+.animal-list-container h2 {
+  color: #f2fbf9;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.add-btn {
+  background-color: #03A64A;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.add-btn:hover {
+  background-color: #04BF8A;
+  transform: scale(1.05);
+}
+
+.animal-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.animal-card {
+  background-color: #f2fbf9;
+  color: #024059;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.animal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.animal-photo img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  margin-bottom: 15px;
+}
+
+.no-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #b0e0d3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #024059;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.animal-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.animal-info h3 {
+  margin: 0 0 5px;
+  font-size: 1.3rem;
+  color: #024059;
+}
+
+.animal-info p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #025940;
+}
+
+.animal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  text-decoration: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.action-btn.edit {
+  background-color: #03A64A;
+}
+
+.action-btn.delete {
+  background-color: #d9534f;
+}
+
+.action-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.no-animals {
+  color: #b9ffb0;
+  font-size: 1.1rem;
+  margin-top: 30px;
+}
+/* === Estilo da Lista de Abrigos === */
+.abrigo-list-container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 40px auto;
+  color: #f2fbf9;
+  text-align: center;
+}
+
+.abrigo-list-container h2 {
+  color: #f2fbf9;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.add-btn {
+  background-color: #03A64A;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.add-btn:hover {
+  background-color: #04BF8A;
+  transform: scale(1.05);
+}
+
+.abrigo-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.abrigo-card {
+  background-color: #f2fbf9;
+  color: #024059;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.abrigo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.abrigo-info {
+  text-align: left;
+}
+
+.abrigo-info h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  color: #024059;
+  border-bottom: 2px solid #03A64A;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.abrigo-info p {
+  margin: 5px 0;
+  color: #025940;
+  font-size: 0.95rem;
+}
+
+.abrigo-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.action-btn {
+  text-decoration: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.action-btn.edit {
+  background-color: #03A64A;
+}
+
+.action-btn.delete {
+  background-color: #d9534f;
+}
+
+.action-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.no-abrigos {
+  color: #b9ffb0;
+  font-size: 1.1rem;
+  margin-top: 30px;
+}
+/* === Estilo da Lista de Adoções === */
+.adocao-list-container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 40px auto;
+  color: #f2fbf9;
+  text-align: center;
+}
+
+.adocao-list-container h2 {
+  color: #f2fbf9;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.add-btn {
+  background-color: #03A64A;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.add-btn:hover {
+  background-color: #04BF8A;
+  transform: scale(1.05);
+}
+
+.adocao-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.adocao-card {
+  background-color: #f2fbf9;
+  color: #024059;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.adocao-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.adocao-info {
+  text-align: left;
+}
+
+.adocao-info h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  color: #024059;
+  border-bottom: 2px solid #03A64A;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.adocao-info p {
+  margin: 5px 0;
+  color: #025940;
+  font-size: 0.95rem;
+}
+
+.adocao-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.action-btn {
+  text-decoration: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.action-btn.edit {
+  background-color: #03A64A;
+}
+
+.action-btn.delete {
+  background-color: #d9534f;
+}
+
+.action-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.no-adocoes {
+  color: #b9ffb0;
+  font-size: 1.1rem;
+  margin-top: 30px;
+}
+/* === Estilo da Lista de Adotantes === */
+.adotante-list-container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 40px auto;
+  color: #f2fbf9;
+  text-align: center;
+}
+
+.adotante-list-container h2 {
+  color: #f2fbf9;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.add-btn {
+  background-color: #03A64A;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.add-btn:hover {
+  background-color: #04BF8A;
+  transform: scale(1.05);
+}
+
+.adotante-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.adotante-card {
+  background-color: #f2fbf9;
+  color: #024059;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.adotante-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.adotante-info {
+  text-align: left;
+}
+
+.adotante-info h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  color: #024059;
+  border-bottom: 2px solid #03A64A;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.adotante-info p {
+  margin: 5px 0;
+  color: #025940;
+  font-size: 0.95rem;
+}
+
+.adotante-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.action-btn {
+  text-decoration: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.action-btn.edit {
+  background-color: #03A64A;
+}
+
+.action-btn.delete {
+  background-color: #d9534f;
+}
+
+.action-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.no-adotantes {
+  color: #b9ffb0;
+  font-size: 1.1rem;
+  margin-top: 30px;
+}
+/* === Formulário de Adoção === */
+.form-card {
+  background: #f2fbf9;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  margin: 30px auto;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #024059;
+  margin-bottom: 6px;
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #03A64A;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-actions .btn {
+  flex: 1;
+  text-align: center;
+  background-color: #03A64A;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.form-actions .btn:hover {
+  background-color: #04BF8A;
+}
+
+.form-actions .btn.cancelar {
+  background-color: #024059;
+}
+/* ===== Ajuste de layout da tela de adoções ===== */
+
+.container-adocoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px; /* mais espaçamento entre o botão e os cards */
+  padding-top: 40px;
+  width: 100%;
+}
+
+/* 🔹 Contêiner do botão para centralização */
+.adocao-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* 🔹 Botão principal */
+.btn-nova-adocao {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #03A64A;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
+}
+
+.btn-nova-adocao:hover {
+  background-color: #04BF8A;
+  transform: scale(1.05);
+}
+
+/* 🔹 Cards de adoção organizados em grid */
+.adocao-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  width: 90%;
+  max-width: 1100px;
+}
+
+/* 🔹 Card individual */
+.card-adocao {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  width: 100%;
+  max-width: 360px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-adocao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* 🔹 Título centralizado */
+.titulo-adocoes {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+/* 🔹 Mensagem de lista vazia */
+.no-adocoes {
+  color: #f2fbf9;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 40px;
+}
+
+
+/* Mensagem de lista vazia */
+.no-adocoes {
+  color: #f2fbf9;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 40px;
+}
+.login-container {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.login-container h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.login-container .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  outline: none;
+}
+
+.login-container .btn {
+  background-color: var(--secondary);
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.login-container .btn:hover {
+  background-color: var(--primary);
+}
+
+.erro {
+  color: #dc3545;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.link {
+  margin-top: 15px;
+}
+.form-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  .form-container h2 {
+    margin-bottom: 20px;
+    color: var(--cor-principal);
+  }
+
+  .form-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-group {
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--cinza-claro);
+    border-radius: 8px;
+  }
+
+  /* 🔹 Botão no mesmo tom de verde da tela inicial */
+  .btn-primary {
+    background-color: #03A64A;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 1000000s;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--verde-escuro);
+  }
+
+  .erro {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .sucesso {
+    color: green;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .link {
+    margin-top: 15px;
+  }
+
+  .link a {
+    color: var(--cor-principal);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .link a:hover {
+    text-decoration: underline;
+  }
+
